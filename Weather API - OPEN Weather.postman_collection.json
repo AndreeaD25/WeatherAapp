@@ -1,0 +1,34 @@
+{
+	"info": {
+		"_postman_id": "819e7c32-21ba-4824-9a52-d22fe5c5fbd3",
+		"name": "Weather API - OPEN Weather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32639593"
+	},
+	"item": [
+		{
+			"name": "Get weather for a city",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get forecast",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get icon",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
