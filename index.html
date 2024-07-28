@@ -5,7 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Weather app</title>
     <link rel="stylesheet" href="style.css" />
-<body>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  </head>
+  <body>
+    <div id="map" style="height: 500px; width: 100%"></div>
+    <div id="container">
+      <h1>Weather forecast 🌞</h1>
+      <div id="current-weather">
+        <div class="location">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Introdu numele orasului" />
+        </div>
+      <div class="button-container">
+
+        <div><button onclick="searchCity()" id="show-weather">Afișează vremea</button></div>
+        <div><button onclick="showForecast()" id="show-forecast">Afișează Prognoza 6 Zile</button></div>
+      </div>
+      <div id="weather-container"></div>
+    </div>
+    <div id="forecast">
+      
+      <div id="forecast-list"></div>
+    </div>
+    <div id="map"></div>
+    <div id="Weather"></div>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYjDoSpEXvxWuGgbhfy2i4gmWtyxwh6gE"
+    ></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -150,3 +150,47 @@ function showWeather() {
       console.error(error);
     });
 }
+
+function showForecast() {
+  const cityName = cityInput.value;
+  const city = cities.find(
+    (city) => city.name.toLowerCase() === cityName.toLowerCase()
+  );
+  if (!city) {
+    alert("Te rugăm să cauți mai întâi un oraș.");
+    return;
+  }
+
+  fetch(URL_FORECAST_WEATHER + city.lat + "&lon=" + city.lon)
+    .then((response) => response.json())
+    .then((data) => {
+      forecastContainer.innerHTML = "";
+      const forecastList = data.list.filter((item, index) => index % 3 === 0);
+      forecastList.forEach((forecast) => {
+        const forecastItem = `
+          <div class="forecast-item">
+            <div class="forecast-time">${new Date(
+              forecast.dt_txt
+            ).toLocaleString()}</div>
+            <div class="forecast-icon">
+              <img src="http://openweathermap.org/img/wn/${
+                forecast.weather[0].icon
+              }.png" alt="Weather Icon">
+            </div>
+            <div class="forecast-temp">${forecast.main.temp} &deg;C</div>
+            <div class="forecast-description">${
+              forecast.weather[0].description
+            }</div>
+          <p>Umiditate: ${forecast.main.humidity} %</p>
+          <p>Presiune: ${forecast.main.pressure} hPa</p>
+          <p>Vânt: ${forecast.wind.speed} m/s</p>
+          </div>
+        `;
+        forecastContainer.innerHTML += forecastItem;
+      });
+    })
+    .catch((error) => {
+      alert("A apărut o eroare.");
+      console.error(error);
+    });
+}
