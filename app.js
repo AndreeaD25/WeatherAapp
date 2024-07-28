@@ -96,3 +96,57 @@ const cities = [
   { name: "Dorohoi", lat: 47.95, lon: 26.4 },
   { name: "Darabani", lat: 48.1833, lon: 26.5833 },
 ];
+
+const showWeatherBtn = document.getElementById("show-weather");
+const showForecastBtn = document.getElementById("show-forecast");
+const cityInput = document.getElementById("city");
+const weatherContainer = document.getElementById("weather-container");
+const forecastContainer = document.getElementById("forecast");
+
+showWeatherBtn.addEventListener("click", showWeather);
+showForecastBtn.addEventListener("click", showForecast);
+
+const URL_CURRENT_WEATHER =
+  "https://api.openweathermap.org/data/2.5/weather?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=";
+
+const URL_FORECAST_WEATHER =
+  "https://api.openweathermap.org/data/2.5/forecast?appid=69518b1f8f16c35f8705550dc4161056&units=metric&lat=";
+
+const map = L.map("map").setView([45.9432, 24.9668], 6);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+function showWeather() {
+  const cityName = cityInput.value;
+  fetch(URL_CURRENT_WEATHER + cityName)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.cod !== 200) {
+        alert("Orașul nu a fost găsit.");
+        return;
+      }
+      const weatherDetails = `
+        <div class="weather-icon">
+          <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        </div>
+        <div class="weather-details">
+          <h2>${data.name}, ${data.sys.country}</h2>
+          <p>Temperatura: ${data.main.temp} &deg;C</p>
+          <p>${data.weather[0].description}</p>
+          <p>Umiditate: ${data.main.humidity}%</p>
+          <p>Presiune: ${data.main.pressure} hPa</p>
+          <p>Vânt: ${data.wind.speed} m/s</p>
+        </div>
+      `;
+      weatherContainer.innerHTML = weatherDetails;
+      map.setView([data.coord.lat, data.coord.lon], 10);
+      L.marker([data.coord.lat, data.coord.lon]).addTo(map);
+    })
+    .catch((error) => {
+      alert("A apărut o eroare.");
+      console.error(error);
+    });
+}
