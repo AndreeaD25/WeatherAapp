@@ -18,7 +18,7 @@ body {
   width: 50%;
   max-width: 800px;
   background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -34,7 +34,7 @@ h2 {
 }
 
 #city {
-  width: calc(80% - 20px);
+  width: calc(70% - 20px);
   padding: 10px;
   margin: 10px 0;
 }
@@ -52,7 +52,7 @@ button {
   background-color: #6200ea;
   border: none;
   color: white;
-  padding: 15px 30px;
+  padding: 10px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-flex;
@@ -74,7 +74,7 @@ button:hover {
 
 #weather-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
@@ -94,7 +94,7 @@ button:hover {
   background: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -103,7 +103,7 @@ button:hover {
 
 .forecast-item {
   background: rgba(255, 255, 255, 0.2);
-  padding: 20px;
+  padding: 1px;
   border-radius: 10px;
   text-align: center;
   margin: 10px;
@@ -117,9 +117,9 @@ button:hover {
 }
 
 #map {
-  height: 300px;
+  height: 400px;
   width: 80%;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 10px;
   margin-top: 20px;
 }
@@ -131,3 +131,17 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
+
+/* @media (max-width: 500px) {
+  .container {
+    grid-template-areas:
+      "current-weather"
+      "button-container"
+      "weather-container"
+      "map"
+      "forecast"
+      "weather";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 2fr 2fr 2fr;
+  }
+} */

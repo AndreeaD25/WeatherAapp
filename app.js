@@ -165,7 +165,7 @@ function showForecast() {
     .then((response) => response.json())
     .then((data) => {
       forecastContainer.innerHTML = "";
-      const forecastList = data.list.filter((item, index) => index % 3 === 0);
+      const forecastList = data.list.filter((item, index) => index % 1 === 0);
       forecastList.forEach((forecast) => {
         const forecastItem = `
           <div class="forecast-item">

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   </head>
   <body>
-    <div id="map" style="height: 500px; width: 100%"></div>
+    <div id="map" style="height: 400px; width: 100%"></div>
     <div id="container">
       <h1>Weather forecast 🌞</h1>
       <div id="current-weather">
@@ -16,11 +16,11 @@
           <label for="city">City</label>
           <input type="text" id="city" placeholder="Introdu numele orasului" />
         </div>
-      <div class="button-container">
-
-        <div><button onclick="searchCity()" id="show-weather">Afișează vremea</button></div>
-        <div><button onclick="showForecast()" id="show-forecast">Afișează Prognoza 6 Zile</button></div>
-      </div>
+        <div class="button-container">
+          
+          <div><button onclick="searchCity()" id="show-weather">Afișează vremea</button></div>
+          <div><button onclick="showForecast()" id="show-forecast">Afișează Prognoza 6 Zile</button></div>
+        </div>
       <div id="weather-container"></div>
     </div>
     <div id="forecast">
